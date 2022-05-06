@@ -1,0 +1,11 @@
+header::after {
+  content: "";
+  height: .1rem;
+  width: 5rem;
+  opacity: 0.6;
+  right: 2px;
+  bottom: -.35rem;
+  position: absolute;
+  background: #ffffff;
+  border-radius: 4px;
+}
