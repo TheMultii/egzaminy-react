@@ -37,6 +37,7 @@ export default function QuizQuestion({
             last:mb-0
             px-[90px]
             py-[30px]
+            mx-auto
             rounded-md
             flex
             flex-col

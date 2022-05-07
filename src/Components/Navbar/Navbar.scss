@@ -6,3 +6,9 @@ iframe {
   top: 0;
   left: 0;
 }
+
+@media screen and (min-width: 768px) {
+  iframe {
+    width: calc(100vw - 16rem);
+  }
+}
