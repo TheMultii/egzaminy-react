@@ -1,8 +1,8 @@
 import QuizQuestion from "../QuizQuestion/QuizQuestion";
-import "./E13.scss"
+import "./E14.scss"
 import {useEffect, useRef, useState} from "react";
 
-export default function E13() {
+export default function E14() {
 
     interface QuestionProps {
         IMG: string,
@@ -15,7 +15,7 @@ export default function E13() {
 
     const mounted = useRef(false);
     const [questions, setQuestions] = useState([]);
-    const [title] = useState("Egzamin EE.08 / INF.02 / E.13 (sprzęt, systemy i sieci komputerowe)");
+    const [title] = useState("Egzamin EE.09 / INF.03 / E.14 (programowanie i bazy danych)");
 
     useEffect(() => {
         document.title = title;
@@ -24,14 +24,14 @@ export default function E13() {
     useEffect(() => {
         mounted.current = true;
         const fetchData = async () => {
-            const data_session = window.sessionStorage.getItem("e13_data");
+            const data_session = window.sessionStorage.getItem("e14_data");
             if (data_session) {
                 setQuestions(JSON.parse(data_session));
             } else {
-                const data = await fetch("https://v4.api.mganczarczyk.pl/v4/e13");
+                const data = await fetch("https://v4.api.mganczarczyk.pl/v4/e14");
                 if (mounted.current) {
                     setQuestions(await data.json());
-                    window.sessionStorage.setItem("e13_data", JSON.stringify(await data.json()));
+                    window.sessionStorage.setItem("e14_data", JSON.stringify(await data.json()));
                 }
             }
         };
@@ -47,7 +47,7 @@ export default function E13() {
         <div>
             <div className="flex justify-center items-center my-[90px] lg:my[230px]">
                 <header
-                    className="text-center text-white text-4xl font-extralight relative lg:whitespace-pre-line block w-[95%] lg:inline-block lg:w-[unset]">
+                    className="text-center text-white text-4xl font-extralight relative inline-block lg:whitespace-pre-line w-[95%] lg:w-full">
                     {title.split("(").join("\n(")}
                 </header>
             </div>

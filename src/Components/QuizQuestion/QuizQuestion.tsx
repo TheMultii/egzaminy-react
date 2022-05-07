@@ -1,7 +1,9 @@
 import "./QuizQuestion.scss"
 import {createElement} from "react";
 
-interface props {
+const renderHTML = (rawHTML: string) => createElement("span", {dangerouslySetInnerHTML: {__html: rawHTML}});
+
+interface QuizQuestionProps {
     question: string,
     answer: string,
     wrong_1: string,
@@ -11,9 +13,16 @@ interface props {
     image?: string
 }
 
-const renderHTML = (rawHTML: string) => createElement("div", {dangerouslySetInnerHTML: {__html: rawHTML}});
+export default function QuizQuestion({
+                                         question,
+                                         answer,
+                                         wrong_1,
+                                         wrong_2,
+                                         wrong_3,
+                                         questionNumber,
+                                         image
+                                     }: QuizQuestionProps) {
 
-export default function QuizQuestion({question, answer, wrong_1, wrong_2, wrong_3, questionNumber, image}: props) {
 
     const answer_letter = answer.charAt(0).toUpperCase();
     const answer_a = answer[0].toUpperCase() === "A" ? answer : (wrong_1[0].toUpperCase() === "A" ? wrong_1 : (wrong_2[0].toUpperCase() === "A" ? wrong_2 : wrong_3));
@@ -36,7 +45,7 @@ export default function QuizQuestion({question, answer, wrong_1, wrong_2, wrong_
             <div
                 className="quiz_title max-w-[800px] sm:max-w-[90%] lg:max-w-[1280px] mx-auto my-0 text-center items-center flex flex-col">
                 <span className="quiz_title_pre">Pytanie #{questionNumber}</span>
-                <p className="quiz_question_p m-0">
+                <p className="quiz_question_p m-0 break-words" style={{wordBreak: "break-word"}}>
                     {renderHTML(question)}
                 </p>
             </div>
@@ -56,7 +65,8 @@ export default function QuizQuestion({question, answer, wrong_1, wrong_2, wrong_
                             className={"answer_div " + (answer_letter === "A" ? "correct" : "")}>
                             <span
                                 className="letter rounded-md select-none text-center text-white w-[75px] h-[75px]">A</span>
-                            <span className="answer_text ml-[20px] text-white">
+                            <span className="answer_text ml-[20px] text-white break-words"
+                                  style={{wordBreak: "break-word"}}>
                                 {renderHTML(answer_a.slice(3))}
                             </span>
                         </div>
@@ -66,7 +76,8 @@ export default function QuizQuestion({question, answer, wrong_1, wrong_2, wrong_
                             className={"answer_div " + (answer_letter === "B" ? "correct" : "")}>
                             <span
                                 className="letter rounded-md select-none text-center text-white w-[75px] h-[75px]">B</span>
-                            <span className="answer_text ml-[20px] text-white">
+                            <span className="answer_text ml-[20px] text-white break-words"
+                                  style={{wordBreak: "break-word"}}>
                                 {renderHTML(answer_b.slice(3))}
                             </span>
                         </div>
@@ -76,7 +87,8 @@ export default function QuizQuestion({question, answer, wrong_1, wrong_2, wrong_
                             className={"answer_div " + (answer_letter === "C" ? "correct" : "")}>
                             <span
                                 className="letter rounded-md select-none text-center text-white w-[75px] h-[75px]">C</span>
-                            <span className="answer_text ml-[20px] text-white">
+                            <span className="answer_text ml-[20px] text-white break-words"
+                                  style={{wordBreak: "break-word"}}>
                                 {renderHTML(answer_c.slice(3))}
                             </span>
                         </div>
@@ -86,7 +98,8 @@ export default function QuizQuestion({question, answer, wrong_1, wrong_2, wrong_
                             className={"answer_div " + (answer_letter === "D" ? "correct" : "")}>
                             <span
                                 className="letter rounded-md select-none text-center text-white w-[75px] h-[75px]">D</span>
-                            <span className="answer_text ml-[20px] text-white">
+                            <span className="answer_text ml-[20px] text-white break-words"
+                                  style={{wordBreak: "break-word"}}>
                                 {renderHTML(answer_d.slice(3))}
                             </span>
                         </div>
